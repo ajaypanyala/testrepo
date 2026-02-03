@@ -7,7 +7,7 @@ namespace Utils {
 
 class MathUtils {
 public:
-    // Calculate factorial
+    // Calculate factorial (valid for n <= 20 to avoid overflow)
     static long long factorial(int n);
     
     // Check if number is prime

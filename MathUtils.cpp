@@ -9,6 +9,9 @@ long long MathUtils::factorial(int n) {
     if (n < 0) {
         throw std::invalid_argument("Factorial is not defined for negative numbers");
     }
+    if (n > 20) {
+        throw std::overflow_error("Factorial overflow: n > 20 exceeds long long range");
+    }
     if (n == 0 || n == 1) {
         return 1;
     }
@@ -52,7 +55,8 @@ int MathUtils::lcm(int a, int b) {
     if (a == 0 || b == 0) {
         return 0;
     }
-    return std::abs(a * b) / gcd(a, b);
+    int gcd_val = gcd(a, b);
+    return std::abs(a / gcd_val) * std::abs(b);
 }
 
 double MathUtils::power(double base, int exponent) {
