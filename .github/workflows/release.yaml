@@ -38,6 +38,10 @@ jobs:
         with:
           tag_name: ${{ github.ref_name }}
           name: mysoftware ${{ steps.ver.outputs.version }}
+          body: |
+            The mysoftware ${{ steps.ver.outputs.version }} release is now available.
+
+            Documentation available at: https://mysoftware.github.io/
           files: |
             mysoftware-*.tar.gz
 
