@@ -14,18 +14,30 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Build tarball
+      - name: Extract version
+        id: ver
         shell: bash
         run: |
           TAG="${GITHUB_REF_NAME}"
-          VER="${TAG#v}"
-          NAME="mysoftware-${VER}"
-          git archive --format=tar.gz --prefix="${NAME}/" "$TAG" > "${NAME}.tar.gz"
+          echo "version=${TAG#v}" >> "$GITHUB_OUTPUT"
 
-      - name: Upload to GitHub Release
+      - name: Build tarball
+        shell: bash
+        run: |
+          VER="${{ steps.ver.outputs.version }}"
+          NAME="mysoftware-${VER}"
+
+          git archive \
+            --format=tar.gz \
+            --prefix="${NAME}/" \
+            "$GITHUB_REF_NAME" \
+            > "${NAME}.tar.gz"
+
+      - name: Create / update GitHub Release
         uses: softprops/action-gh-release@v2
-        if: github.ref_type == 'tag'
         with:
+          tag_name: ${{ github.ref_name }}
+          name: mysoftware ${{ steps.ver.outputs.version }}
           files: |
             mysoftware-*.tar.gz
 
