@@ -1,0 +1,1 @@
+/home/runner/work/testrepo/.codeql-scratch/dbs/cpp/working/autobuild/bin/c++ -O3 -DNDEBUG -Wl,--dependency-file=CMakeFiles/dynamic_array.dir/link.d CMakeFiles/dynamic_array.dir/main.cpp.o -o dynamic_array
