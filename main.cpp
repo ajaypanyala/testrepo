@@ -47,8 +47,7 @@ void test_exception_handling() {
     DynamicArray<int> arr;
     arr.push_back(10); arr.push_back(20);
     try {
-        int val = arr[5];
-        std::cout << "Value: " << val << std::endl;
+        arr[5];  // This should throw an exception
     } catch (const std::out_of_range& e) {
         std::cout << "Exception: " << e.what() << std::endl;
     }

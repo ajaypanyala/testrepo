@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include <stdexcept>
-#include <cstring>
 
 /**
  * A simple dynamic array implementation similar to std::vector
