@@ -37,9 +37,9 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ github.ref_name }}
-          name: mysoftware ${{ steps.ver.outputs.version }}
+          name: MYSOFTWARE ${{ steps.ver.outputs.version }}
           body: |
-            The mysoftware ${{ steps.ver.outputs.version }} release is now available.
+            The MYSOFTWARE ${{ steps.ver.outputs.version }} release is now available.
 
             Documentation available at: https://mysoftware.github.io/
           files: |
